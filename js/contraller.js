@@ -23,7 +23,7 @@ function renderImgs() {
     let imgs = getImages()
     let strHtml = ''
     imgs.forEach(img => {
-        strHtml += `<div class="meme-box"><img class="meme-img" src="/img/meme-imgs (square)/${img.url}"></div>`
+        strHtml += `<div class="meme-box"><img class="meme-img" src="img/meme-imgs (square)/${img.url}"></div>`
     })
     document.querySelector('.images-container').innerHTML = strHtml
 }
