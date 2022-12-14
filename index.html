@@ -29,13 +29,44 @@
 
     <!-- side-bar-for-mobile -->
     <div class="side-bar">
-<ul class="side-bar-ul">
-    <li class="side-li" onclick="onMyMemes()">MyMemes</li>
-    <li class="side-li" onclick="onGallery()">Gallery</li>
-    <li class="side-li" onclick="onAbout()">About</li>
-</ul>
+        <ul class="side-bar-ul">
+            <li class="side-li" onclick="onMyMemes()">MyMemes</li>
+            <li class="side-li" onclick="onGallery()">Gallery</li>
+            <li class="side-li" onclick="onAbout()">About</li>
+        </ul>
     </div>
 
+    <!-- editor -->
+
+    <div class="editor">
+        <div class="canvas-container">
+            <button class="editor-btn" onclick="onCloseEditor()">&#60; Back to Gallery</button>
+            <canvas class="canvas" width="500" height="300">  
+            </canvas>
+        </div>
+        <div class="editor-container">
+            <h2 class="editor-header">Edit Text Lines</h2>
+            <button class="editor-btns">add text</button>
+            <button class="editor-btns">remove</button>
+            <div class="tools">
+                <form>
+                    <select id="ddlViewBy">
+                        <option value="1">Impact</option>
+                        <option value="2">Ariel</option>
+                        <option value="3">Rubik</option>
+                    </select>
+
+                    
+                </form>
+                <input class="color-picker" type="color" value="#e66465">
+                <button class="editor-btns">under-line</button>
+                <button class="editor-btns">text-left</button>
+                <button class="editor-btns">text-center</button>
+                <button class="editor-btns">text-right</button>
+            </div>
+            <input type="text" class="text-input">
+        </div>
+    </div>
 
     <!-- search form-->
     <form>
