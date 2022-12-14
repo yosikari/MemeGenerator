@@ -150,9 +150,9 @@ footer {
 
     .side-bar {
         min-width: 10rem;
+        display: none;
         position: absolute;
-        transition: 1s;
-        right: -100%;
+        right: -32px;
         box-shadow: 10px 10px 5px rgb(0 0 0 / 0.6);
     }
 

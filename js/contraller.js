@@ -32,9 +32,9 @@ function renderImgs() {
 function toggleSideNav() {
     let elSideBar = document.querySelector('.side-bar')
     if (isSideBarOpen) {
-        elSideBar.style.right = '-100%'
+        elSideBar.style.display = 'none'
     } else {
-        elSideBar.style.right = '-32px'
+        elSideBar.style.display = 'block'
     }
     isSideBarOpen = !isSideBarOpen
 }
