@@ -2,6 +2,7 @@
 let canvas = document.querySelector('.canvas')
 var context = canvas.getContext('2d');
 var isSideBarOpen = false
+var currImgId = null
 
 function onInit() {
     renderImgs()
@@ -41,7 +42,8 @@ function toggleSideNav() {
 }
 
 function onImgClick(id) {
-    renderEditor(id)
+    currImgId = id
+    renderEditor()
     document.querySelector('.editor').style.display = 'grid'
     document.querySelector('.search-bar').style.display = 'none'
     document.querySelector('.images-container').style.display = 'none'
@@ -54,16 +56,16 @@ function onCloseEditor() {
     document.querySelector('.images-container').style.display = 'grid'
 }
 
-function renderEditor(id) {
+function renderEditor() {
     let imgs = getImages()
-    let currimg = imgs.find(img => img.id === id)
+    let currimg = imgs.find(img => img.id === currImgId)
     let imgUrl = `img/meme-imgs (square)/${currimg.url}`
+    document.querySelector('.text-input').value =''
 
     make_base(imgUrl);
 }
 
 function make_base(imgUrl) {
-    console.log(imgUrl)
     let base_image = new Image();
     base_image.src = imgUrl;
 
@@ -73,4 +75,20 @@ function make_base(imgUrl) {
     // context.drawImage(base_image, 0, 0, base_image.width, base_image.height, 0,0,base_image.width*ratio, base_image.height*ratio);
 
     context.drawImage(base_image, 0, 0);
+}
+
+
+function onTextInput() {
+    let str = document.querySelector('.text-input').value
+    drawText(str)
+}
+
+
+function drawText(str) {
+    const ctx = canvas.getContext("2d");
+    ctx.font = "60px Impact";
+    ctx.fillStyle = "white";
+    ctx.strokeText(str, 10, 50);
+    ctx.fillText(str, 10, 50);
+
 }

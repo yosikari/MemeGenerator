@@ -47,7 +47,7 @@
         <div class="editor-container">
             <h2 class="editor-header">Edit Text Lines</h2>
             <button class="editor-btns">add text</button>
-            <button class="editor-btns">remove</button>
+            <button class="editor-btns" onclick="renderEditor()">remove</button>
             <div class="tools">
                 <form>
                     <select id="ddlViewBy">
@@ -56,7 +56,6 @@
                         <option value="3">Rubik</option>
                     </select>
 
-                    
                 </form>
                 <input class="color-picker" type="color" value="#e66465">
                 <button class="editor-btns">under-line</button>
@@ -64,7 +63,7 @@
                 <button class="editor-btns">text-center</button>
                 <button class="editor-btns">text-right</button>
             </div>
-            <input type="text" class="text-input">
+            <input type="text" oninput="onTextInput()" class="text-input">
         </div>
     </div>
 
@@ -78,7 +77,6 @@
     <!-- images container -->
 
     <div class="images-container">
-
 
     </div>
 
