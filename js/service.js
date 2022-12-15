@@ -21,7 +21,46 @@ var gImages = [
     {id: getRandomId(), url: '18.jpg', keywords: ['funny', 'cat']},
 ];
 
+var gTextBoxes = []
+let gTextBoxToMove = null
+
 
 function getImages(){
     return gImages
+}
+function getTextBoxes(){
+   return gTextBoxes
+}
+
+function getTextBoxPos(index){
+    return {x:gTextBoxes[index].x , y :gTextBoxes[index].y}
+}
+
+function setTextInTextBox(index,text){
+     gTextBoxes[index].text = text
+}
+
+function addTextBox(text ,x, y, width, height){
+    gTextBoxes.push({text:text, x :x, y: y ,width: width, height: height})
+}
+
+function checkIfClickedTextBox(clickedPos){
+    for(var i = 0 ; i < gTextBoxes.length; i++){
+        if(gTextBoxes[i].y - gTextBoxes[i].height <= clickedPos.y &&
+           gTextBoxes[i].y > clickedPos.y){
+             gTextBoxToMove =  gTextBoxes[i]
+             return true
+        }
+    }
+  return false
+}
+
+function moveTextBox(dx, dy) {
+    gTextBoxToMove.x += dx
+    gTextBoxToMove.y += dy
+
+}
+
+function clearTextBoxes(){
+    gTextBoxes = []
 }

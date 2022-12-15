@@ -46,24 +46,24 @@
         </div>
         <div class="editor-container">
             <h2 class="editor-header">Edit Text Lines</h2>
-            <button class="editor-btns">add text</button>
-            <button class="editor-btns" onclick="renderEditor()">remove</button>
+            <button class="editor-btns top-btns-l" onclick="onAddNewTextBox()">add text</button>
+            <button class="editor-btns top-btns-r" onclick=" onRemove()">remove</button>
             <div class="tools">
                 <form>
-                    <select id="ddlViewBy">
+                    <select class="low-btns-1 font-form">
                         <option value="1">Impact</option>
                         <option value="2">Ariel</option>
                         <option value="3">Rubik</option>
                     </select>
 
                 </form>
-                <input class="color-picker" type="color" value="#e66465">
-                <button class="editor-btns">under-line</button>
-                <button class="editor-btns">text-left</button>
-                <button class="editor-btns">text-center</button>
-                <button class="editor-btns">text-right</button>
+                <input class="low-btns-2 color-picker" type="color" value="#e66465">
+                <button class="low-btns-3 editor-btns">under-line</button>
+                <button class="low-btns-4 editor-btns">text-left</button>
+                <button class="low-btns-5 editor-btns">text-center</button>
+                <button class="low-btns-6 editor-btns">text-right</button>
             </div>
-            <input type="text" oninput="onTextInput()" class="text-input">
+            <input type="text"  onkeyup ="onTextInput()" class="text-input" >
         </div>
     </div>
 
