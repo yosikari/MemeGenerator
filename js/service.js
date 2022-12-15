@@ -40,8 +40,16 @@ function setTextInTextBox(index,text){
      gTextBoxes[index].text = text
 }
 
-function addTextBox(text ,x, y, width, height){
-    gTextBoxes.push({text:text, x :x, y: y ,width: width, height: height})
+function setColorInTextBox(index,color){
+    gTextBoxes[index].color = color
+}
+
+function setFontInTextBox(index,font){
+    gTextBoxes[index].font = font
+}
+
+function addTextBox(text ,x, y, width, height, color, font){
+    gTextBoxes.push({text:text, x :x, y: y ,width: width, height: height, color: color, font: font})
 }
 
 function checkIfClickedTextBox(clickedPos){

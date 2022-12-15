@@ -145,7 +145,7 @@ footer {
 
 /* editor */
 
-.editor{
+.editor {
     display: none;
     background-color: var(--color4);
     min-height: 80vh;
@@ -155,7 +155,6 @@ footer {
 
 
 .canvas-container {
-    background-color: white;
     display: grid;
     grid-template-rows: 0.5fr 9fr;
     justify-self: center;
@@ -163,7 +162,6 @@ footer {
 }
 
 .editor-btn {
-    background-color: white;
     border: none;
     color: var(--color3);
     padding: 5px;
@@ -178,55 +176,102 @@ footer {
     position: relative;
     text-align: center;
     align-items: center;
-    /* display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 2fr;
-    gap: 10px;
+    max-height: 50vh;
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+    gap: 5px;
     grid-template-areas:
-        ". . . ."
-        "header . top-btns-l top-btns-r ."
-        ". . . ."
-        "tools tools tools tools"
-        "text-input text-input text-input text-input"
-        "stikers stikers stikers stikers"; */
+        "header top-btns"
+        "tools tools"
+        "text-input text-input"
+        "stikers-box stikers-box";
 
 }
 
-.editor-header{
+.editor-header {
     color: var(--color5);
-    text-align: left;
+    text-align: center;
     grid-area: header;
+    align-self: flex-start;
+    margin-top: 1em;
 }
 
-.top-btns-l{
-    grid-area: top-btns-l; 
-}
-.top-btns-r{
-    grid-area: top-btns-r; 
+.btn-add {
+    grid-area: top-btns;
+    align-self: flex-center;
 }
 
+.btn-remove {
+    grid-area: top-btns;
+    justify-self: center;
+    align-self: flex-center;
+}
+
+.btn-save{
+    grid-area: top-btns;
+    align-self: flex-end;
+}
+
+.btn-download{
+    grid-area: top-btns;
+    justify-self: center;
+    align-self: flex-end;
+}
+
+.stikers-box,
 .text-input {
     text-align: center;
     font-size: 1em;
     border: 1px solid var(--color3);
-    min-width: 22em;
-    min-height: 3em;
+    min-width: 22rem;
+    min-height: 5rem;
     grid-area: text-input;
+    align-self: flex-center;
+    justify-self: center;
 }
 
-.tools{
-display: flex;
-flex-direction: row;
-height: 2.5em;
-max-width: 80%;
-margin: 0 auto;
+.tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: flex-end;
+    height: 2.5em;
 }
 
-.editor-btns{
-    font-weight: bold;
+
+.stikers-box {
+    grid-area: stikers-box;
+    background-color: white;
+    font-size: 3rem;
+    max-width: 22em;
+    border-radius: 2em;
 }
 
-.canvas{
+.font-form {
+    min-width: 8em;
+    height: 2.5em;
+}
+
+.color-picker {
+    height: 2.5em;
+    width: 2.5em;
+}
+
+.editor-btns {
+    width: 1.5em;
+    height: 1.5em;
+    object-fit: cover;
+    margin: 2px;
+}
+
+.editor-btns:hover {
+    cursor: pointer;
+    border: 1px solid black;
+
+}
+
+.canvas {
     max-width: 100%;
     max-height: 80vh;
 }
@@ -294,8 +339,42 @@ margin: 0 auto;
         grid-template-rows: 1.5fr 1fr;
     }
 
-    .editor-btn { 
-        max-width: 35%;
+    .editor-container {
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        grid-template-rows: 0.5fr 0.8fr 0.5fr 0.5fr 0.5fr;
+        gap: 5px;
+        grid-template-areas:
+            "header header"
+            "top-btns top-btns"
+            "tools tools"
+            "text-input text-input"
+            "stikers-box stikers-box";
+    
+    }
+
+    .editor-header {
+        margin-top: 0em;
+    }
+    
+    .btn-add {
+        align-self: flex-end;
+        justify-self: flex-end;
+    }
+    
+    .btn-remove {
+        align-self: flex-start;
+        justify-self: flex-end;
+    }
+
+    .btn-save {
+        align-self: flex-start;
+        justify-self: flex-start;
+    }
+    
+    .btn-download {
+        align-self: flex-end;
+        justify-self: flex-start;
     }
 
 

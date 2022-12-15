@@ -7,11 +7,12 @@ let isDrag = false
 var currImgId = null
 var textBoxIndex = 0
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-
+var currColor = 'white'
+var currFont = 'Impact'
 
 function onInit() {
     renderImgs()
-    addTextBox("", 10, 60, gCanvas.width, 60, 0)
+    addTextBox("", 10, 60, gCanvas.width, 60, currColor, currFont)
     addListeners()
 }
 
@@ -35,7 +36,7 @@ function onCloseEditor() {
 
         document.querySelector('.text-input').value = ''
         clearTextBoxes()
-        addTextBox("", 10, 60, gCanvas.width, 60, 0)
+        addTextBox("", 10, 60, gCanvas.width, 60, currColor, currFont)
         textBoxIndex = 0
     }
 }
@@ -146,6 +147,18 @@ function onAbout() {
     console.log('about')
 }
 
+function onSetColor(elColorPicker) {
+    currColor = elColorPicker.value
+    setColorInTextBox(textBoxIndex, currColor)
+    renderEditor()
+}
+
+function onSetFont(elFontSelector) {
+    currFont = elFontSelector.value
+    setFontInTextBox(textBoxIndex, currFont)
+    renderEditor()
+}
+
 function renderImgs() {
     let imgs = getImages()
     let strHtml = ''
@@ -176,7 +189,7 @@ function renderEditor() {
     let textBoxes = getTextBoxes()
     textBoxes.forEach((textBox, index) => {
         if (textBox.text) {
-            drawText(textBox.text, textBox.x, textBox.y, index)
+            drawText(textBox.text, textBox.x, textBox.y, index, textBox.color, textBox.font)
         }
     })
 }
@@ -185,7 +198,7 @@ function onRemove() {
     if (confirm('Are you sure?')) {
         document.querySelector('.text-input').value = ''
         clearTextBoxes()
-        addTextBox('', 10, 60, gCanvas.width, 60, 0)
+        addTextBox('', 10, 60, gCanvas.width, 60, currColor, currFont)
         textBoxIndex = 0
         renderEditor()
     }
@@ -209,10 +222,11 @@ function onTextInput() {
 
 
 
-function drawText(str, x, y, index = textBoxIndex) {
+function drawText(str, x, y, index = textBoxIndex, color = currColor, font = currFont) {
+    console.log(currFont)
     const ctx = gCanvas.getContext("2d")
-    ctx.font = "60px Impact"
-    ctx.fillStyle = "white"
+    ctx.font = `60px ${font}`
+    ctx.fillStyle = color
     ctx.lineWidth = 5
     ctx.strokeText(str, x, y)
     ctx.fillText(str, x, y)
@@ -223,9 +237,9 @@ function onAddNewTextBox() {
     document.querySelector('.text-input').value = ''
     textBoxIndex++
     if (textBoxIndex === 1) {
-        addTextBox('', 10, gCanvas.height - 100, gCanvas.width, 60)
+        addTextBox('', 10, gCanvas.height - 100, gCanvas.width, 60, currColor, currFont)
     } else {
-        addTextBox('', 10, gCanvas.height / 2, gCanvas.width, 60)
+        addTextBox('', 10, gCanvas.height / 2, gCanvas.width, 60, currColor, currFont)
     }
     setTextInTextBox(textBoxIndex, null)
 

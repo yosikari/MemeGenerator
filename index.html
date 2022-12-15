@@ -46,24 +46,26 @@
         </div>
         <div class="editor-container">
             <h2 class="editor-header">Edit Text Lines</h2>
-            <button class="editor-btns top-btns-l" onclick="onAddNewTextBox()">add text</button>
-            <button class="editor-btns top-btns-r" onclick=" onRemove()">remove</button>
+            <img class="editor-btns top btn-add" onclick="onAddNewTextBox()" src="img/btns/plus.jpeg">
+            <img class="editor-btns top btn-remove" onclick="onRemove()" src="img/btns/remove.jpeg">
+            <img class="editor-btns btn-save" src="img/btns/save.jpeg">
+            <img class="editor-btns btn-download" src="img/btns/download.jpeg">
             <div class="tools">
                 <form>
-                    <select class="low-btns-1 font-form">
-                        <option value="1">Impact</option>
-                        <option value="2">Ariel</option>
-                        <option value="3">Rubik</option>
+                    <select class="font-form" onchange=onSetFont(this)>
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Serif">Serif</option>
                     </select>
 
                 </form>
-                <input class="low-btns-2 color-picker" type="color" value="#e66465">
-                <button class="low-btns-3 editor-btns">under-line</button>
-                <button class="low-btns-4 editor-btns">text-left</button>
-                <button class="low-btns-5 editor-btns">text-center</button>
-                <button class="low-btns-6 editor-btns">text-right</button>
+                <input class="color-picker" onchange="onSetColor(this)" type="color" value="#ffffff">
+                <img class="editor-btns btn-l" src="img/btns/text-l.jpeg">
+                <img class="editor-btns btn-c" src="img/btns/text-c.jpeg">
+                <img class="editor-btns btn-r" src="img/btns/text-r.jpeg">
             </div>
             <input type="text"  onkeyup ="onTextInput()" class="text-input" >
+            <div class="stikers-box">🎅🧦🎄⭐</div>
         </div>
     </div>
 
