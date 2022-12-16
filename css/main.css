@@ -114,7 +114,8 @@ button:hover {
 
 /* images container */
 
-.my-memes-container,.images-container {
+.my-memes-container,
+.images-container {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
@@ -128,19 +129,24 @@ button:hover {
     max-width: 15vw;
     object-fit: cover;
 }
-.meme-img:hover{
+
+.meme-img:hover {
     border: 2px solid var(--color2);
     cursor: pointer;
 }
 
+.upload-img:hover {
+    border: 2px solid rgba(255, 255, 255, 0);
+}
+
 
 footer {
-    position: absolute;
-    display: block;
-    bottom: 0em;
-    width: 100vw;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
-    margin-top: auto;
+    font-size: 0.8em;
     background-color: var(--color3);
     border-top: 2px solid var(--color3);
 }
@@ -212,12 +218,12 @@ footer {
     align-self: flex-center;
 }
 
-.btn-save{
+.btn-save {
     grid-area: top-btns;
     align-self: flex-end;
 }
 
-.btn-download{
+.btn-download {
     grid-area: top-btns;
     justify-self: center;
     align-self: flex-end;
@@ -281,7 +287,7 @@ footer {
     max-height: 80vh;
 }
 
-.my-memes{
+.my-memes {
     display: none;
     text-align: center;
     min-width: 97vw;
@@ -292,36 +298,49 @@ footer {
 }
 
 
-.saved-modal{
+.saved-modal {
     display: none;
     position: sticky;
     top: 20px;
     border: 2px black solid;
 }
 
-.my-memes-container{
+.my-memes-container {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr));
     justify-items: center;
 }
 
-.saved-mem{
+.saved-mem {
     border-radius: 1em;
     min-width: 25vw;
     min-height: 25vw;
     object-fit: cover;
 }
 
-.saved-mem:hover{
+.saved-mem:hover {
     border: 2px solid var(--color2);
     cursor: pointer;
 }
 
-.btn-my-memes{
+.btn-my-memes {
     background-color: rgba(255, 255, 255, 0.4);
 
 }
+
+
+
+i.fa.fa-upload:before{
+font-size: 4.5em;
+}
+
+.fa-upload:hover{
+    cursor: pointer;
+    border: solid 1px rgba(255, 255, 255, 0); 
+}
+
+
 
 @media screen and (max-width: 915px) {
 
@@ -374,11 +393,6 @@ footer {
         max-width: 30vw;
     }
 
-    footer {
-        position: relative;
-    }
-
-
     .editor {
         grid-template-columns: 1fr;
         grid-template-rows: 1.5fr 1fr;
@@ -395,18 +409,18 @@ footer {
             "tools tools"
             "text-input text-input"
             "stikers-box stikers-box";
-    
+
     }
 
     .editor-header {
         margin-top: 0em;
     }
-    
+
     .btn-add {
         align-self: flex-end;
         justify-self: flex-end;
     }
-    
+
     .btn-remove {
         align-self: flex-start;
         justify-self: flex-end;
@@ -416,11 +430,15 @@ footer {
         align-self: flex-start;
         justify-self: flex-start;
     }
-    
+
     .btn-download {
         align-self: flex-end;
         justify-self: flex-start;
     }
+
+    i.fa.fa-upload:before{
+        font-size: 3em;
+        }
 
 
 }

@@ -21,11 +21,15 @@ function onInit() {
 //open and close editor 
 
 function onImgClick(id) {
-    currImgId = id
-    renderEditor()
-    document.querySelector('.editor').style.display = 'grid'
-    document.querySelector('.search-bar').style.display = 'none'
-    document.querySelector('.images-container').style.display = 'none'
+    if (id !== 'upload-img') {
+        currImgId = id
+        renderEditor()
+        document.querySelector('.editor').style.display = 'grid'
+        document.querySelector('.search-bar').style.display = 'none'
+        document.querySelector('.images-container').style.display = 'none'
+    } else {
+
+    }
 }
 
 
@@ -170,7 +174,12 @@ function onSetFont(elFontSelector) {
 
 function renderImgs() {
     let imgs = getImages()
-    let strHtml = ''
+    let strHtml = `<div class="meme-box upload" onclick="onUploadImg()">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <label class="upload btn btn-default btn-sm btn-file">
+    <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
+    <input type="file" onchange="onUploadImg(this)" style="display: none;">
+    </label></div>`
     imgs.forEach(img => {
         strHtml += `<div class="meme-box" onclick="onImgClick(${img.id})"><img class="meme-img" src="${img.url}"></div>`
     })
@@ -313,10 +322,21 @@ function onRemoveSavedMeme(index) {
     renderSavedMemes()
 }
 
-function onSavedMemClick(index){
+function onSavedMemClick(index) {
     renderEditor(true, index)
     document.querySelector('.editor').style.display = 'grid'
     document.querySelector('.search-bar').style.display = 'none'
     document.querySelector('.images-container').style.display = 'none'
     document.querySelector('.my-memes').style.display = 'none'
+}
+
+function onUploadImg(elImage){
+    const reader = new FileReader()
+    reader.addEventListener("load", () => {
+        let url = reader.result
+        addImage(url, ['funny'])
+        renderImgs()
+      })
+      if(elImage)
+      reader.readAsDataURL(elImage.files[0])
 }

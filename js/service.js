@@ -30,7 +30,14 @@ let gIndexSelctedTextBox = -1
 var gSavedMemes = []
 
 
+function addImage(url, keywords){
+    gImages.unshift({id: getRandomId(), url:url, keywords: keywords})
+    _SaveImgsToStorage()
+}
+
 function getImages() {
+    let storegeImages = loadFromStorage(IMGS_KEY)
+    gImages = storegeImages ? storegeImages : gImages
     return gImages
 }
 function getTextBoxes() {
@@ -100,7 +107,7 @@ function getSavedMemes() {
 }
 
 function _SaveImgsToStorage() {
-    saveToStorage(IMGS_KEY, 'images')
+    saveToStorage(IMGS_KEY, gImages)
 }
 
 function _SaveMemesToStorage() {
