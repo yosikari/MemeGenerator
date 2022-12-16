@@ -44,6 +44,10 @@ function getTextBoxes() {
     return gTextBoxes
 }
 
+function getTextBox(index){
+  return gTextBoxes[index]
+}
+
 function getTextBoxPos(index) {
     return { x: gTextBoxes[index].x, y: gTextBoxes[index].y }
 }
@@ -60,13 +64,18 @@ function setFontInTextBox(index, font) {
     gTextBoxes[index].font = font
 }
 
-function addTextBox(text, x, y, width, height, color, font) {
-    gTextBoxes.push({ text: text, x: x, y: y, width: width, height: height, color: color, font: font })
+function setFontSize(index, delta){
+    if(gTextBoxes[index].fontSize + delta === 25 || gTextBoxes[index].fontSize + delta === 120) return
+    gTextBoxes[index].fontSize += delta
+}
+
+function addTextBox(text, x, y, width, fontSize, color, font) {
+    gTextBoxes.push({ text: text, x: x, y: y, width: width, fontSize: fontSize, color: color, font: font })
 }
 
 function checkIfClickedTextBox(clickedPos) {
     for (var i = 0; i < gTextBoxes.length; i++) {
-        if (gTextBoxes[i].y - gTextBoxes[i].height <= clickedPos.y &&
+        if (gTextBoxes[i].y - gTextBoxes[i].fontSize <= clickedPos.y &&
             gTextBoxes[i].y > clickedPos.y) {
             gIndexSelctedTextBox = i
             return true

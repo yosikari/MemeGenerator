@@ -7,14 +7,14 @@ let isDrag = false
 var currImgId = null
 var textBoxIndex = 0
 var numTextBoxes = 1
-
+var currFontSize = 60
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-var currColor = 'white'
+var currColor = '#ffffff'
 var currFont = 'Impact'
 
 function onInit() {
     renderImgs()
-    addTextBox("", 10, 60, gCanvas.width, 60, currColor, currFont)
+    addTextBox("", 10, 60, gCanvas.width, currFontSize, currColor, currFont)
     addListeners()
 }
 
@@ -39,7 +39,7 @@ function onCloseEditor() {
     document.querySelector('.images-container').style.display = 'grid'
     document.querySelector('.text-input').value = ''
     clearTextBoxes()
-    addTextBox("", 10, 60, gCanvas.width, 60, currColor, currFont)
+    addTextBox("", 10, 60, gCanvas.width, currFontSize, currColor, currFont)
     textBoxIndex = 0
 }
 
@@ -86,6 +86,12 @@ function onDown(ev) {
         return
     }
     textBoxIndex = getSelectedTextBoxIndex()
+    let textBox = getTextBox(textBoxIndex)
+    currColor = textBox.color
+    currFont = textBox.font
+    currFontSize = textBox.fontSize
+    document.querySelector('.color-picker').value = currColor
+    document.querySelector('.font-form').value = currFont
     isDrag = true
 
     //Save the pos we start from
@@ -165,12 +171,27 @@ function onSetColor(elColorPicker) {
     renderEditor()
 }
 
+
 function onSetFont(elFontSelector) {
     currFont = elFontSelector.value
     let index = textBoxIndex < 0 ? numTextBoxes - 1 : textBoxIndex
     setFontInTextBox(index, currFont)
     renderEditor()
 }
+
+function onFontSizePlus() {
+    let index = textBoxIndex < 0 ? numTextBoxes - 1 : textBoxIndex
+    setFontSize(index, 5)
+    renderEditor()
+}
+
+function onFontSizeMinus() {
+    let index = textBoxIndex < 0 ? numTextBoxes - 1 : textBoxIndex
+    setFontSize(index, -5)
+    renderEditor()
+}
+
+
 
 function renderImgs() {
     let imgs = getImages()
@@ -213,7 +234,7 @@ function renderEditor(renderSavedMem = false, id = currImgId) {
     let textBoxes = getTextBoxes()
     textBoxes.forEach((textBox, index) => {
         if (textBox.text) {
-            drawText(textBox.text, textBox.x, textBox.y, index, textBox.color, textBox.font)
+            drawText(textBox.text, textBox.x, textBox.y, index, textBox.color, textBox.font, textBox.fontSize)
         }
     })
 }
@@ -222,7 +243,7 @@ function onRemove() {
     if (confirm('Are you sure?')) {
         document.querySelector('.text-input').value = ''
         clearTextBoxes()
-        addTextBox('', 10, 60, gCanvas.width, 60, currColor, currFont)
+        addTextBox('', 10, 60, gCanvas.width, currFontSize, currColor, currFont)
         textBoxIndex = 0
         renderEditor()
     }
@@ -241,22 +262,22 @@ function onTextInput() {
     let str = document.querySelector('.text-input').value
     renderEditor()
     let index = textBoxIndex < 0 ? numTextBoxes - 1 : textBoxIndex
-    let pos = getTextBoxPos(index)
-    drawText(str, pos.x, pos.y, index)
+    let textBox = getTextBox(index)
+    drawText(str, textBox.x, textBox.y, index, textBox.color, textBox.font, textBox.fontSize)
 }
 
 
 
-function drawText(str, x, y, index = textBoxIndex, color = currColor, font = currFont) {
+function drawText(str, x, y, index = textBoxIndex, color = currColor, font = currFont, fontSize = currFontSize) {
     const ctx = gCanvas.getContext("2d")
     if (index === textBoxIndex) {
         ctx.beginPath()
-        ctx.rect(0, y - 53, gCanvas.width, 60)
+        ctx.rect(0, y - (fontSize - 7), gCanvas.width, fontSize)
         ctx.lineWidth = 1;
         ctx.stroke()
         document.querySelector('.text-input').value = str
     }
-    ctx.font = `60px ${font}`
+    ctx.font = `${fontSize}px ${font}`
     ctx.fillStyle = color
     ctx.lineWidth = 5
     ctx.strokeText(str, x, y)
@@ -268,15 +289,22 @@ function onAddNewTextBox() {
     document.querySelector('.text-input').value = ''
     numTextBoxes++
     if (numTextBoxes === 2) {
-        addTextBox('', 10, gCanvas.height - 100, gCanvas.width, 60, currColor, currFont)
+        addTextBox('', 10, gCanvas.height - 100, gCanvas.width, currFontSize, currColor, currFont)
     } else {
-        addTextBox('', 10, gCanvas.height / 2, gCanvas.width, 60, currColor, currFont)
+        addTextBox('', 10, gCanvas.height / 2, gCanvas.width, currFontSize, currColor, currFont)
     }
     setTextInTextBox(numTextBoxes - 1, null)
     textBoxIndex = numTextBoxes - 1
 }
 
-
+function drawStiker(stiker) {
+    let x = gCanvas.width / 2.5
+    let y = gCanvas.height / 2
+    renderEditor()
+    addTextBox('', x, y, gCanvas.width, currFontSize, currColor, currFont)
+    drawText(stiker, x, y, numTextBoxes)
+    numTextBoxes++
+}
 function onSaveMeme() {
     let dataUrl = gCanvas.toDataURL("image/jpeg")
     addMemeToMyMemes(dataUrl)
@@ -330,13 +358,13 @@ function onSavedMemClick(index) {
     document.querySelector('.my-memes').style.display = 'none'
 }
 
-function onUploadImg(elImage){
+function onUploadImg(elImage) {
     const reader = new FileReader()
     reader.addEventListener("load", () => {
         let url = reader.result
         addImage(url, ['funny'])
         renderImgs()
-      })
-      if(elImage)
-      reader.readAsDataURL(elImage.files[0])
+    })
+    if (elImage)
+        reader.readAsDataURL(elImage.files[0])
 }

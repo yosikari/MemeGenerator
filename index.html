@@ -67,9 +67,15 @@
                 <img class="editor-btns btn-l" src="img/btns/text-l.jpeg">
                 <img class="editor-btns btn-c" src="img/btns/text-c.jpeg">
                 <img class="editor-btns btn-r" src="img/btns/text-r.jpeg">
+                <img class="editor-btns btn-text-down" onclick="onFontSizeMinus()" src="img/btns/text-size-down.png">
+                <img class="editor-btns btn-text-up" onclick="onFontSizePlus()" src="img/btns/text-size-up.png">
             </div>
             <input type="text" onkeyup="onTextInput()" class="text-input">
-            <div class="stikers-box">🎅🧦🎄⭐</div>
+            <div class="stikers-box">
+                <span class="stiker-btn" onclick="drawStiker('🎅')">🎅</span>
+                <span class="stiker-btn" onclick="drawStiker('🧦')">🧦</span>
+                <span class="stiker-btn" onclick="drawStiker('🎄')">🎄</span>
+                <span class="stiker-btn" onclick="drawStiker('⭐')">⭐</span></div>
         </div>
     </div>
 
