@@ -36,20 +36,24 @@
         </ul>
     </div>
 
+    <!-- saved-modal -->
+
+    <img class="saved-modal" src="img/saved.png" >
+
     <!-- editor -->
 
     <div class="editor">
         <div class="canvas-container">
             <button class="editor-btn" onclick="onCloseEditor()">&#60; Back to Gallery</button>
-            <canvas class="canvas" width="500" height="300">  
+            <canvas class="canvas" width="500" height="300">
             </canvas>
         </div>
         <div class="editor-container">
             <h2 class="editor-header">Edit Text Lines</h2>
             <img class="editor-btns top btn-add" onclick="onAddNewTextBox()" src="img/btns/plus.jpeg">
-            <img class="editor-btns top btn-remove" onclick="onRemove()" src="img/btns/remove.jpeg">
-            <img class="editor-btns btn-save" src="img/btns/save.jpeg">
-            <img class="editor-btns btn-download" src="img/btns/download.jpeg">
+            <img class="editor-btns top btn-remove" onclick="onRemove()" src="img/btns/remove.png">
+            <img class="editor-btns btn-save" onclick="onSaveMeme()" src="img/btns/save.jpeg">
+            <img class="editor-btns btn-download" onclick="onDownloadCanvasMeme()" src="img/btns/download.png">
             <div class="tools">
                 <form>
                     <select class="font-form" onchange=onSetFont(this)>
@@ -64,8 +68,18 @@
                 <img class="editor-btns btn-c" src="img/btns/text-c.jpeg">
                 <img class="editor-btns btn-r" src="img/btns/text-r.jpeg">
             </div>
-            <input type="text"  onkeyup ="onTextInput()" class="text-input" >
+            <input type="text" onkeyup="onTextInput()" class="text-input">
             <div class="stikers-box">🎅🧦🎄⭐</div>
+        </div>
+    </div>
+
+
+    <!-- my-memes -->
+    <div class="my-memes">
+        <button class="editor-btn" onclick="onCloseMyMemes()">&#60; Back to Gallery</button>
+        <h2>my saved memes:</h2>
+        <div class="my-memes-container">
+
         </div>
     </div>
 

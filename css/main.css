@@ -20,7 +20,7 @@
     --color1: rgb(57, 181, 0);
     --color2: red;
     --color3: rgb(198, 198, 198);
-    --color4: rgb(242, 242, 242);
+    --color4: #f0f0f0;
     --color5: gray;
 }
 
@@ -114,7 +114,7 @@ button:hover {
 
 /* images container */
 
-.images-container {
+.my-memes-container,.images-container {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
@@ -127,6 +127,10 @@ button:hover {
     border-radius: 1em;
     max-width: 15vw;
     object-fit: cover;
+}
+.meme-img:hover{
+    border: 2px solid var(--color2);
+    cursor: pointer;
 }
 
 
@@ -246,6 +250,7 @@ footer {
     font-size: 3rem;
     max-width: 22em;
     border-radius: 2em;
+    margin-bottom: 0.5em;
 }
 
 .font-form {
@@ -272,13 +277,53 @@ footer {
 }
 
 .canvas {
-    max-width: 100%;
+    max-width: 96vw;
     max-height: 80vh;
 }
 
+.my-memes{
+    display: none;
+    text-align: center;
+    min-width: 97vw;
+    min-height: 80vh;
+    color: var(--color5);
+    background-color: var(--color4);
+    border: 2px solid var(--color3);
+}
 
 
-@media screen and (max-width: 760px) {
+.saved-modal{
+    display: none;
+    position: sticky;
+    top: 20px;
+    border: 2px black solid;
+}
+
+.my-memes-container{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr));
+    justify-items: center;
+}
+
+.saved-mem{
+    border-radius: 1em;
+    min-width: 25vw;
+    min-height: 25vw;
+    object-fit: cover;
+}
+
+.saved-mem:hover{
+    border: 2px solid var(--color2);
+    cursor: pointer;
+}
+
+.btn-my-memes{
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+@media screen and (max-width: 915px) {
 
     .top-bar {
         display: none;
