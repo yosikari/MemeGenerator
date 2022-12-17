@@ -301,8 +301,9 @@ footer {
 
 .saved-modal {
     display: none;
-    position: sticky;
-    top: 20px;
+    position: absolute;
+    top: 50vh;
+    left: 30vw;
     border: 2px black solid;
 }
 
@@ -332,20 +333,20 @@ footer {
 
 
 
-i.fa.fa-upload:before{
-font-size: 4.5em;
+i.fa.fa-upload:before {
+    font-size: 4.5em;
 }
 
-.fa-upload:hover{
+.fa-upload:hover {
     cursor: pointer;
-    border: solid 1px rgba(255, 255, 255, 0); 
+    border: solid 1px rgba(255, 255, 255, 0);
 }
 
 
-.stiker-btn:hover{
-cursor: pointer;
-background-color: rgba(255, 0, 0, 0.1); 
-border-radius: 2em;
+.stiker-btn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-radius: 2em;
 }
 
 
@@ -366,6 +367,15 @@ border-radius: 2em;
         position: absolute;
         right: -32px;
         box-shadow: 10px 10px 5px rgb(0 0 0 / 0.6);
+    }
+
+    .side-bar-shadow {
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 150%;
+        background-color: black;
+        opacity: 0.3;
     }
 
     .side-bar-ul {
@@ -402,7 +412,7 @@ border-radius: 2em;
 
     .editor {
         grid-template-columns: 1fr;
-        grid-template-rows: 1.5fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
     .editor-container {
@@ -443,9 +453,52 @@ border-radius: 2em;
         justify-self: flex-start;
     }
 
-    i.fa.fa-upload:before{
+    i.fa.fa-upload:before {
         font-size: 3em;
-        }
+    }
 
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .editor-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+
+    }
+
+    .editor-header {
+        width: 100%;
+    }
+
+    .btn-remove {
+        margin-inline-end: 30%;
+    }
+
+    .text-input {
+        padding: 0px;
+        min-height: 3rem;
+    }
+
+    nav {
+        min-height: 1.5em;
+    }
+
+    .logo {
+        position: absolute;
+        top: 6px;
+        max-height: 2em;
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 6px;
+        right: 0px;
+        max-height: 2em;
+    }
 
 }

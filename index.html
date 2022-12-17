@@ -28,6 +28,9 @@
     </nav>
 
     <!-- side-bar-for-mobile -->
+    <div onclick="toggleSideNav()" class="side-bar-shadow"> 
+    </div>
+    
     <div class="side-bar">
         <ul class="side-bar-ul">
             <li class="side-li" onclick="onMyMemes()">MyMemes</li>
@@ -36,9 +39,10 @@
         </ul>
     </div>
 
+
     <!-- saved-modal -->
 
-    <img class="saved-modal" src="img/saved.png">
+    <img onclick="hideElement(this)" class="saved-modal" src="img/saved.png">
 
     <!-- editor -->
 
@@ -67,8 +71,8 @@
                 <img class="editor-btns btn-l" src="img/btns/text-l.jpeg">
                 <img class="editor-btns btn-c" src="img/btns/text-c.jpeg">
                 <img class="editor-btns btn-r" src="img/btns/text-r.jpeg">
-                <img class="editor-btns btn-text-down" onclick="onFontSizeMinus()" src="img/btns/text-size-down.png">
-                <img class="editor-btns btn-text-up" onclick="onFontSizePlus()" src="img/btns/text-size-up.png">
+                <img class="editor-btns btn-text-down" onclick="onFontSize(-5)" src="img/btns/text-size-down.png">
+                <img class="editor-btns btn-text-up" onclick="onFontSize(5)" src="img/btns/text-size-up.png">
             </div>
             <input type="text" onkeyup="onTextInput()" class="text-input">
             <div class="stikers-box">
@@ -95,9 +99,6 @@
             <input class="search-box" type="search" placeholder="Search…" />
         </div>
     </form>
-
-    <!-- upload-img
-    <div class="upload-img"><img class="upload-btn" src="img/btns/upload-img.png"></div> -->
 
     <!-- images container -->
 

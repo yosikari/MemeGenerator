@@ -179,18 +179,15 @@ function onSetFont(elFontSelector) {
     renderEditor()
 }
 
-function onFontSizePlus() {
+function onFontSize(delta) {
     let index = textBoxIndex < 0 ? numTextBoxes - 1 : textBoxIndex
-    setFontSize(index, 5)
+    setFontSize(index, delta)
     renderEditor()
 }
 
-function onFontSizeMinus() {
-    let index = textBoxIndex < 0 ? numTextBoxes - 1 : textBoxIndex
-    setFontSize(index, -5)
-    renderEditor()
+function hideElement(el) {
+    el.style.display = 'none'
 }
-
 
 
 function renderImgs() {
@@ -209,10 +206,13 @@ function renderImgs() {
 
 
 function toggleSideNav() {
+    let elSideBarShadow = document.querySelector('.side-bar-shadow')
     let elSideBar = document.querySelector('.side-bar')
     if (isSideBarOpen) {
+        elSideBarShadow.style.display = 'none'
         elSideBar.style.display = 'none'
     } else {
+        elSideBarShadow.style.display = 'block'
         elSideBar.style.display = 'block'
     }
     isSideBarOpen = !isSideBarOpen
@@ -243,7 +243,7 @@ function onRemove() {
     if (confirm('Are you sure?')) {
         document.querySelector('.text-input').value = ''
         clearTextBoxes()
-        addTextBox('', 10, 60, gCanvas.width, currFontSize, currColor, currFont)
+        addTextBox('', 10, 60, gCanvas.width, currFontSize, currColor, currFont, currFontSize)
         textBoxIndex = 0
         renderEditor()
     }
@@ -282,6 +282,7 @@ function drawText(str, x, y, index = textBoxIndex, color = currColor, font = cur
     ctx.lineWidth = 5
     ctx.strokeText(str, x, y)
     ctx.fillText(str, x, y)
+    console.log(ctx.measureText(str).width)
     setTextInTextBox(index, str)
 }
 
