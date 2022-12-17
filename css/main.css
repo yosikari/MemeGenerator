@@ -367,6 +367,7 @@ i.fa.fa-upload:before {
         position: absolute;
         right: -32px;
         box-shadow: 10px 10px 5px rgb(0 0 0 / 0.6);
+        z-index: 999;
     }
 
     .side-bar-shadow {
@@ -376,6 +377,7 @@ i.fa.fa-upload:before {
         height: 150%;
         background-color: black;
         opacity: 0.3;
+        z-index: 1;
     }
 
     .side-bar-ul {

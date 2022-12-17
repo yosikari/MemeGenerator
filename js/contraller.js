@@ -5,9 +5,11 @@ var isSideBarOpen = false
 let gStartPos
 let isDrag = false
 var currImgId = null
+var savedMemIndx = null
 var textBoxIndex = 0
 var numTextBoxes = 1
 var currFontSize = 60
+var renderSavedMem = false
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 var currColor = '#ffffff'
 var currFont = 'Impact'
@@ -34,6 +36,7 @@ function onImgClick(id) {
 
 
 function onCloseEditor() {
+    renderSavedMem = false
     document.querySelector('.editor').style.display = 'none'
     document.querySelector('.search-bar').style.display = 'flex'
     document.querySelector('.images-container').style.display = 'grid'
@@ -190,8 +193,12 @@ function hideElement(el) {
 }
 
 
-function renderImgs() {
-    let imgs = getImages()
+function renderImgs(isFillter = false) {
+    if (isFillter) {
+        var imgs = getFilteredImages()
+    } else {
+        var imgs = getImages()
+    }
     let strHtml = `<div class="meme-box upload" onclick="onUploadImg()">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
     <label class="upload btn btn-default btn-sm btn-file">
@@ -220,14 +227,14 @@ function toggleSideNav() {
 
 
 
-function renderEditor(renderSavedMem = false, id = currImgId) {
+function renderEditor() {
     let imgUrl
-    if (renderSavedMem) { //for mems the id is the index in the mem array
-        imgUrl = getSavedMemes()[id].dataUrl
+    if (renderSavedMem) {
+        imgUrl = getSavedMemes()[savedMemIndx].dataUrl
     }
-    else { //for images the id is not the index so we need to go over the images
+    else {
         let imgs = getImages()
-        let currimg = imgs.find(img => img.id === id)
+        let currimg = imgs.find(img => img.id === currImgId)
         imgUrl = currimg.url
     }
     make_base(imgUrl);
@@ -282,7 +289,7 @@ function drawText(str, x, y, index = textBoxIndex, color = currColor, font = cur
     ctx.lineWidth = 5
     ctx.strokeText(str, x, y)
     ctx.fillText(str, x, y)
-    console.log(ctx.measureText(str).width)
+    //console.log(ctx.measureText(str).width)
     setTextInTextBox(index, str)
 }
 
@@ -352,7 +359,9 @@ function onRemoveSavedMeme(index) {
 }
 
 function onSavedMemClick(index) {
-    renderEditor(true, index)
+    savedMemIndx = index
+    renderSavedMem = true
+    renderEditor()
     document.querySelector('.editor').style.display = 'grid'
     document.querySelector('.search-bar').style.display = 'none'
     document.querySelector('.images-container').style.display = 'none'
@@ -363,9 +372,24 @@ function onUploadImg(elImage) {
     const reader = new FileReader()
     reader.addEventListener("load", () => {
         let url = reader.result
-        addImage(url, ['funny'])
+        let grups = []
+        var stop = false
+        while (!stop) {
+            var category = prompt('Please add categories for your image (exit to stop)')
+            if (category.toUpperCase() !== 'EXIT') {
+                grups.push(category)
+            } else {
+                stop = true
+            }
+        }
+        addImage(url, grups)
         renderImgs()
     })
     if (elImage)
         reader.readAsDataURL(elImage.files[0])
+}
+
+function onSearch(val) {
+    searchFillter(val)
+    renderImgs(true)
 }

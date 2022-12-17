@@ -4,25 +4,27 @@ const IMGS_KEY = 'images'
 const MEMES_KEY = 'memes'
 
 var gImages = [
-    { id: getRandomId(), url: 'img/meme-imgs (square)/1.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/2.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/3.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/4.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/5.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/6.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/7.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/8.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/9.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/10.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/11.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/12.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/13.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/14.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/15.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/16.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/17.jpg', keywords: ['funny', 'cat'] },
-    { id: getRandomId(), url: 'img/meme-imgs (square)/18.jpg', keywords: ['funny', 'cat'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/1.jpg', keywords: ['politics', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/2.jpg', keywords: ['animals', 'dog'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/3.jpg', keywords: ['animals','baby', 'dog'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/4.jpg', keywords: ['animals', 'cat'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/5.jpg', keywords: ['funny', 'baby'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/6.jpg', keywords: ['funny', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/7.jpg', keywords: ['funny', 'baby'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/8.jpg', keywords: ['funny', 'man','thinking'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/9.jpg', keywords: ['funny', 'baby'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/10.jpg', keywords: ['politics', 'man','obama'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/11.jpg', keywords: ['boxing', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/12.jpg', keywords: ['funny', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/13.jpg', keywords: ['funny', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/14.jpg', keywords: ['funny', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/15.jpg', keywords: ['funny', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/16.jpg', keywords: ['funny', 'man'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/17.jpg', keywords: ['politics', 'man','potin'] },
+    { id: getRandomId(), url: 'img/meme-imgs (square)/18.jpg', keywords: ['funny', 'toys'] },
 ];
+
+var fillteredImges 
 
 var gTextBoxes = []
 let gIndexSelctedTextBox = -1
@@ -114,6 +116,23 @@ function getSavedMemes() {
     gSavedMemes = loadFromStorage(MEMES_KEY) 
     return gSavedMemes
 }
+
+
+function searchFillter(val){
+    fillteredImges = gImages.filter(img => {
+        for(let i = 0 ; i < img.keywords.length; i++){
+            if( img.keywords[i].indexOf(val) !== -1 )
+            return true
+        }
+        return false
+       })
+}
+
+function getFilteredImages(){
+return fillteredImges
+}
+
+
 
 function _SaveImgsToStorage() {
     saveToStorage(IMGS_KEY, gImages)

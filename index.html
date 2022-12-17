@@ -30,7 +30,7 @@
     <!-- side-bar-for-mobile -->
     <div onclick="toggleSideNav()" class="side-bar-shadow"> 
     </div>
-    
+
     <div class="side-bar">
         <ul class="side-bar-ul">
             <li class="side-li" onclick="onMyMemes()">MyMemes</li>
@@ -96,7 +96,7 @@
     <!-- search form-->
     <form>
         <div class="search-bar">
-            <input class="search-box" type="search" placeholder="Search…" />
+            <input class="search-box"  onkeyup="onSearch(this.value)" autocomplete="on" type="search" placeholder="Search…" />
         </div>
     </form>
 
