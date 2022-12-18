@@ -20,9 +20,9 @@
 
         <!-- tools-bar -->
         <ul class="top-bar">
-            <li onclick="onMyMemes()">MyMemes</li>
-            <li onclick="onGallery()">Gallery</li>
-            <li onclick="onAbout()">About</li>
+            <li onclick="onMyMemes(false)">MyMemes</li>
+            <li onclick="onGallery(false)">Gallery</li>
+            <li onclick="onAbout(false)">About</li>
         </ul>
         <img class="nav-btn" onclick="toggleSideNav()" src="img/btns/nav-btn.png">
     </nav>
@@ -33,9 +33,9 @@
 
     <div class="side-bar">
         <ul class="side-bar-ul">
-            <li class="side-li" onclick="onMyMemes()">MyMemes</li>
-            <li class="side-li" onclick="onGallery()">Gallery</li>
-            <li class="side-li" onclick="onAbout()">About</li>
+            <li class="side-li" onclick="onMyMemes(true)">MyMemes</li>
+            <li class="side-li" onclick="onGallery(true)">Gallery</li>
+            <li class="side-li" onclick="onAbout(true)">About</li>
         </ul>
     </div>
 

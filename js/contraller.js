@@ -151,7 +151,10 @@ function resizeCanvas() {
     gCanvas.height = elContainer.offsetHeight
 }
 
-function onMyMemes() {
+function onMyMemes(isSideBar) {
+    if (isSideBar) {  //close side bar on switch pages
+        toggleSideNav()
+    }
     onCloseEditor()
     document.querySelector('.my-memes').style.display = 'block'
     document.querySelector('.search-bar').style.display = 'none'
@@ -159,11 +162,17 @@ function onMyMemes() {
     renderSavedMemes()
 }
 
-function onGallery() {
+function onGallery(isSideBar) {
+    if (isSideBar) {  //close side bar on switch pages
+        toggleSideNav()
+    }
     onCloseMyMemes()
 }
 
-function onAbout() {
+function onAbout(isSideBar) {
+    if(isSideBar){   //close side bar on switch pages
+        toggleSideNav()
+    }
     alert('coming soon...')
 }
 
