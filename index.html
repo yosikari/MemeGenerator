@@ -24,11 +24,11 @@
             <li onclick="onGallery(false)">Gallery</li>
             <li onclick="onAbout(false)">About</li>
         </ul>
-        <img class="nav-btn" onclick="toggleSideNav()" src="img/btns/nav-btn.png">
+        <img class="nav-btn" onclick="onToggleSideNav()" src="img/btns/nav-btn.png">
     </nav>
 
     <!-- side-bar-for-mobile -->
-    <div onclick="toggleSideNav()" class="side-bar-shadow"> 
+    <div onclick="onToggleSideNav()" class="side-bar-shadow">
     </div>
 
     <div class="side-bar">
@@ -53,33 +53,38 @@
             </canvas>
         </div>
         <div class="editor-container">
-            <h2 class="editor-header">Edit Text Lines</h2>
-            <img class="editor-btns top btn-add" onclick="onAddNewTextBox()" src="img/btns/plus.jpeg">
-            <img class="editor-btns top btn-remove" onclick="onRemove()" src="img/btns/remove.png">
-            <img class="editor-btns btn-save" onclick="onSaveMeme()" src="img/btns/save.jpeg">
-            <img class="editor-btns btn-download" onclick="onDownloadCanvasMeme()" src="img/btns/download.png">
-            <div class="tools">
-                <form>
-                    <select class="font-form" onchange=onSetFont(this)>
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Serif">Serif</option>
-                    </select>
+            <fieldset>
+                <legend>
+                    <h2 class="editor-header">Edit Text Lines</h2>
+                </legend>
+                <img class="editor-btns btn-add" onclick="onAddNewTextBox()" src="img/btns/plus.jpeg">
+                <img class="editor-btns btn-remove" onclick="onRemove()" src="img/btns/remove.png">
+                <img class="editor-btns btn-save" onclick="onSaveMeme()" src="img/btns/save.jpeg">
+                <img class="editor-btns btn-download" onclick="onDownloadCanvasMeme()" src="img/btns/download.png">
+                <div class="tools">
+                    <form>
+                        <select class="font-form" onchange=onSetFont(this)>
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Serif">Serif</option>
+                        </select>
 
-                </form>
-                <input class="color-picker" onchange="onSetColor(this)" type="color" value="#ffffff">
-                <img class="editor-btns btn-l" src="img/btns/text-l.jpeg">
-                <img class="editor-btns btn-c" src="img/btns/text-c.jpeg">
-                <img class="editor-btns btn-r" src="img/btns/text-r.jpeg">
-                <img class="editor-btns btn-text-down" onclick="onFontSize(-5)" src="img/btns/text-size-down.png">
-                <img class="editor-btns btn-text-up" onclick="onFontSize(5)" src="img/btns/text-size-up.png">
-            </div>
-            <input type="text" onkeyup="onTextInput()" class="text-input">
-            <div class="stikers-box">
-                <span class="stiker-btn" onclick="drawStiker('🎅')">🎅</span>
-                <span class="stiker-btn" onclick="drawStiker('🧦')">🧦</span>
-                <span class="stiker-btn" onclick="drawStiker('🎄')">🎄</span>
-                <span class="stiker-btn" onclick="drawStiker('⭐')">⭐</span></div>
+                    </form>
+                    <input class="color-picker" onchange="onSetColor(this)" type="color" value="#ffffff">
+                    <img class="editor-btns btn-l" src="img/btns/text-l.jpeg">
+                    <img class="editor-btns btn-c" src="img/btns/text-c.jpeg">
+                    <img class="editor-btns btn-r" src="img/btns/text-r.jpeg">
+                    <img class="editor-btns btn-text-down" onclick="onFontSize(-5)" src="img/btns/text-size-down.png">
+                    <img class="editor-btns btn-text-up" onclick="onFontSize(5)" src="img/btns/text-size-up.png">
+                </div>
+                <input type="text" onkeyup="onTextInput()" class="text-input">
+                <div class="stikers-box">
+                    <span class="stiker-btn" onclick="onDrawStiker('🎅')">🎅</span>
+                    <span class="stiker-btn" onclick="onDrawStiker('🧦')">🧦</span>
+                    <span class="stiker-btn" onclick="onDrawStiker('🎄')">🎄</span>
+                    <span class="stiker-btn" onclick="onDrawStiker('⭐')">⭐</span>
+                </div>
+            </fieldset>
         </div>
     </div>
 
@@ -96,7 +101,8 @@
     <!-- search form-->
     <form>
         <div class="search-bar">
-            <input class="search-box"  onkeyup="onSearch(this.value)" autocomplete="on" type="search" placeholder="Search…" />
+            <input class="search-box" onkeyup="onSearch(this.value)" autocomplete="on" type="search"
+                placeholder="Search…" />
         </div>
     </form>
 

@@ -27,7 +27,7 @@ var gImages = [
 var fillteredImges 
 
 var gTextBoxes = []
-let gIndexSelctedTextBox = -1
+let gIndexSelectedTextBox = -1
 
 var gSavedMemes = []
 
@@ -38,8 +38,8 @@ function addImage(url, keywords){
 }
 
 function getImages() {
-    let storegeImages = loadFromStorage(IMGS_KEY)
-    gImages = storegeImages ? storegeImages : gImages
+    let storageImages = loadFromStorage(IMGS_KEY)
+    gImages = storageImages ? storageImages : gImages
     return gImages
 }
 function getTextBoxes() {
@@ -79,7 +79,7 @@ function checkIfClickedTextBox(clickedPos) {
     for (var i = 0; i < gTextBoxes.length; i++) {
         if (gTextBoxes[i].y - gTextBoxes[i].fontSize <= clickedPos.y &&
             gTextBoxes[i].y > clickedPos.y) {
-            gIndexSelctedTextBox = i
+            gIndexSelectedTextBox = i
             return true
         }
     }
@@ -87,18 +87,18 @@ function checkIfClickedTextBox(clickedPos) {
 }
 
 function moveTextBox(dx, dy) {
-    gTextBoxes[gIndexSelctedTextBox].x += dx
-    gTextBoxes[gIndexSelctedTextBox].y += dy
+    gTextBoxes[gIndexSelectedTextBox].x += dx
+    gTextBoxes[gIndexSelectedTextBox].y += dy
 
 }
 
 function getSelectedTextBoxIndex() {
-    return gIndexSelctedTextBox;
+    return gIndexSelectedTextBox;
 }
 
 function clearTextBoxes() {
     gTextBoxes = []
-    gIndexSelctedTextBox = -1
+    gIndexSelectedTextBox = -1
 }
 
 

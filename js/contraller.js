@@ -86,6 +86,7 @@ function onDown(ev) {
     if (!checkIfClickedTextBox(pos)) {
         textBoxIndex = -1
         renderEditor()
+        document.body.style.cursor = 'default'
         return
     }
     textBoxIndex = getSelectedTextBoxIndex()
@@ -117,7 +118,7 @@ function onMove(ev) {
 
 function onUp() {
     isDrag = false
-    document.body.style.cursor = 'grab'
+    document.body.style.cursor = 'default'
 }
 
 
@@ -153,7 +154,7 @@ function resizeCanvas() {
 
 function onMyMemes(isSideBar) {
     if (isSideBar) {  //close side bar on switch pages
-        toggleSideNav()
+        onToggleSideNav()
     }
     onCloseEditor()
     document.querySelector('.my-memes').style.display = 'block'
@@ -164,14 +165,14 @@ function onMyMemes(isSideBar) {
 
 function onGallery(isSideBar) {
     if (isSideBar) {  //close side bar on switch pages
-        toggleSideNav()
+        onToggleSideNav()
     }
     onCloseMyMemes()
 }
 
 function onAbout(isSideBar) {
     if(isSideBar){   //close side bar on switch pages
-        toggleSideNav()
+        onToggleSideNav()
     }
     alert('coming soon...')
 }
@@ -221,7 +222,7 @@ function renderImgs(isFillter = false) {
 }
 
 
-function toggleSideNav() {
+function onToggleSideNav() {
     let elSideBarShadow = document.querySelector('.side-bar-shadow')
     let elSideBar = document.querySelector('.side-bar')
     if (isSideBarOpen) {
@@ -314,7 +315,7 @@ function onAddNewTextBox() {
     textBoxIndex = numTextBoxes - 1
 }
 
-function drawStiker(stiker) {
+function onDrawStiker(stiker) {
     let x = gCanvas.width / 2.5
     let y = gCanvas.height / 2
     renderEditor()
